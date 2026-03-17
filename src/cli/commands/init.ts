@@ -116,7 +116,8 @@ export const registerInitCommand = (program: Command): void => {
             let installed = 0;
             for (const skill of skills) {
               const dest = joinPath(targetDir, skill.name);
-              if (!existsSync(dest)) {
+              const skillFile = joinPath(dest, 'SKILL.md');
+              if (!existsSync(skillFile)) {
                 cpSync(joinPath(templatesDir, skill.name), dest, { recursive: true });
                 installed++;
               }
@@ -126,8 +127,31 @@ export const registerInitCommand = (program: Command): void => {
               fmt.info(`🧩 ${installed} agent-kit skills installed to .agent/skills/`);
             }
           }
+
+          // Install bundled workflows (slash commands)
+          const workflowsTemplateDir = joinPath(pkgRoot, 'templates', 'workflows');
+          const workflowsTargetDir = joinPath(root, '.agent', 'workflows');
+
+          if (existsSync(workflowsTemplateDir)) {
+            mkdirSync(workflowsTargetDir, { recursive: true });
+            const workflows = readdirSync(workflowsTemplateDir, { withFileTypes: true })
+              .filter(f => f.isFile() && f.name.endsWith('.md'));
+
+            let wfInstalled = 0;
+            for (const wf of workflows) {
+              const dest = joinPath(workflowsTargetDir, wf.name);
+              if (!existsSync(dest)) {
+                cpSync(joinPath(workflowsTemplateDir, wf.name), dest);
+                wfInstalled++;
+              }
+            }
+
+            if (wfInstalled > 0) {
+              fmt.info(`📋 ${wfInstalled} workflows installed to .agent/workflows/`);
+            }
+          }
         } catch {
-          // Non-critical: skills are optional, don't block init
+          // Non-critical: skills/workflows are optional, don't block init
         }
 
         // Getting-started guide
@@ -136,13 +160,15 @@ export const registerInitCommand = (program: Command): void => {
         fmt.newline();
         fmt.info('📁 All data stays local in .agent/');
         fmt.info('🔒 Working memories are gitignored');
-        fmt.info('🧩 Skills available — try /akit-help for guidance');
+        fmt.info(`🧩 Skills & workflows installed — language: ${communicationLanguage}`);
         fmt.newline();
         fmt.info('Next steps:');
-        console.log('  agent start    — Begin a coding session');
-        console.log('  agent status   — Check project health');
-        console.log('  /akit-help     — Get context-aware guidance');
-        console.log('  agent --help   — See all commands');
+        console.log('  agent start            — Begin a coding session');
+        console.log('  agent status           — Check project health');
+        console.log('  /akit-help             — Get context-aware guidance');
+        console.log('  /akit-create-prd       — Create product requirements');
+        console.log('  /akit-brainstorming    — Brainstorm ideas');
+        console.log('  agent --help           — See all commands');
       } catch (e) {
         handleCommandError(fmt, e);
       }

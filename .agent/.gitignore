@@ -1,0 +1,5 @@
+# Agent-Kit — auto-generated
+working/
+sessions/
+private/
+*.lock
