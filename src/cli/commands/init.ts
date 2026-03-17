@@ -102,8 +102,9 @@ export const registerInitCommand = (program: Command): void => {
           const { fileURLToPath } = await import('node:url');
 
           // Resolve templates dir relative to package root
+          // dist/index.js → dist/ → package root (2 levels)
           const __filename = fileURLToPath(import.meta.url);
-          const pkgRoot = dirname(dirname(dirname(dirname(__filename))));
+          const pkgRoot = dirname(dirname(__filename));
           const templatesDir = joinPath(pkgRoot, 'templates', 'skills');
           const targetDir = joinPath(root, '.agent', 'skills');
 
