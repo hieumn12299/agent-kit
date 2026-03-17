@@ -61,6 +61,8 @@ export const createProgram = (): Command => {
 // Run CLI only when executed as entry point (not when imported in tests)
 
 const isEntryPoint = (() => {
+  // Support bin wrapper (sets env flag)
+  if (process.env.AGENT_KIT_CLI === '1') return true;
   try {
     const thisFile = realpathSync(fileURLToPath(import.meta.url));
     const executed = process.argv[1] ? realpathSync(resolve(process.argv[1])) : '';

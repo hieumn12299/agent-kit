@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-await import(join(__dirname, '..', 'dist', 'index.js'));
+// CLI entry point — sets AGENT_KIT_CLI flag so dist/index.js knows to run CLI
+process.env.AGENT_KIT_CLI = '1';
+await import('../dist/index.js');
