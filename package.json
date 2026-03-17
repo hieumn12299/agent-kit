@@ -36,7 +36,8 @@
     }
   },
   "bin": {
-    "agent": "./bin/agent.js"
+    "agent": "bin/agent.js",
+    "dn-agent-kit": "bin/agent.js"
   },
   "engines": {
     "node": ">=20"
