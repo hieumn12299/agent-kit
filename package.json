@@ -1,0 +1,99 @@
+{
+  "name": "agent-kit",
+  "version": "0.1.0",
+  "description": "Agent-Kit — AI memory & orchestration framework for developers. Lightweight context management, MCP server for IDE agents, plugin system, and graph-based workflows.",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./memory": {
+      "import": "./dist/core/memory/memory-store.js",
+      "types": "./dist/core/memory/memory-store.d.ts"
+    },
+    "./retrieval": {
+      "import": "./dist/core/retrieval/smart-retriever.js",
+      "types": "./dist/core/retrieval/smart-retriever.d.ts"
+    },
+    "./mcp": {
+      "import": "./dist/mcp/mcp-server.js",
+      "types": "./dist/mcp/mcp-server.d.ts"
+    },
+    "./plugins": {
+      "import": "./dist/core/plugins/plugin-registry.js",
+      "types": "./dist/core/plugins/plugin-registry.d.ts"
+    },
+    "./graph": {
+      "import": "./dist/core/orchestration/graph-builder.js",
+      "types": "./dist/core/orchestration/graph-builder.d.ts"
+    },
+    "./coordination": {
+      "import": "./dist/core/coordination/lock-manager.js",
+      "types": "./dist/core/coordination/lock-manager.d.ts"
+    }
+  },
+  "bin": {
+    "agent": "./dist/index.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src/",
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit",
+    "prepublishOnly": "npm run typecheck && npm run test && npm run build"
+  },
+  "keywords": [
+    "ai",
+    "memory",
+    "developer-tools",
+    "cli",
+    "mcp",
+    "model-context-protocol",
+    "ai-agent",
+    "orchestration",
+    "plugin",
+    "graph",
+    "state-machine",
+    "context",
+    "knowledge-base"
+  ],
+  "author": "hieunm",
+  "license": "MIT",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hieunm/agent-kit"
+  },
+  "homepage": "https://github.com/hieunm/agent-kit#readme",
+  "dependencies": {
+    "@inquirer/prompts": "^8.3.2",
+    "@modelcontextprotocol/sdk": "^1.27.1",
+    "commander": "^14.0.3",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/node": "^25.5.0",
+    "@typescript-eslint/eslint-plugin": "^8.57.0",
+    "@typescript-eslint/parser": "^8.57.0",
+    "eslint": "^10.0.3",
+    "prettier": "^3.8.1",
+    "tsup": "^8.5.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.57.0",
+    "vitest": "^4.1.0"
+  }
+}

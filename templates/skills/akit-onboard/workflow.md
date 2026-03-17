@@ -1,0 +1,124 @@
+# Agent-Kit Onboarding — Guided Setup
+
+**Goal:** Walk the user through a complete agent-kit setup from zero to productive in under 5 minutes.
+
+**Your Role:** You are a friendly onboarding guide. Adapt to the user's current state — skip completed steps.
+
+---
+
+## EXECUTION
+
+### Step 1: Check Prerequisites
+
+Verify the environment:
+```bash
+node --version    # Requires >=20
+npm --version     # Verify npm is available
+```
+
+If not installed, guide: "Install Node.js 20+ from https://nodejs.org"
+
+### Step 2: Install agent-kit
+
+```bash
+npm install -g agent-kit
+```
+
+Verify: `agent --version` should show the installed version.
+
+### Step 3: Initialize Project
+
+Navigate to the project root and run:
+```bash
+agent init
+```
+
+**What happens:**
+- Auto-detects language, framework, git status
+- Previews config → user confirms
+- Creates `.agent/` directory structure
+- Shows getting-started guide
+
+**If already initialized:** Skip to Step 4. Tell the user: "✅ Already initialized! Moving on..."
+
+### Step 4: First Session
+
+```bash
+agent start
+```
+
+**Explain:**
+- Sessions scope your working context
+- Memories from previous sessions are loaded
+- Working memory starts fresh each session
+
+**Tip:** "Work normally — agent-kit works in the background."
+
+### Step 5: Create First Memory
+
+Two paths:
+
+**Interactive:**
+```bash
+agent memory add
+```
+Opens `$EDITOR` with a template.
+
+**Non-interactive (faster for demo):**
+```bash
+agent memory add --title "Project conventions" --content "We use TypeScript strict mode with ESM imports"
+```
+
+**Verify:** `agent memory list` should show the new memory.
+
+### Step 6: End Session
+
+```bash
+agent end
+```
+
+**What happens:**
+- Extracts insights from git diff + session
+- Prompts to save insights as memories
+- Shows memory growth: 📈 0 → 2 memories
+
+### Step 7: Retrieve Context
+
+```bash
+agent context --query "conventions"
+```
+
+**Should return** the memory created in Step 5, ranked by relevance.
+
+### Step 8: (Optional) AI Setup
+
+Ask: "Would you like to enable AI features? This adds semantic search, auto-categorization, and enhanced insights."
+
+If yes, invoke `/akit-ai-setup` or guide directly:
+```bash
+# For local AI (free, private)
+agent config ai ollama
+ollama pull nomic-embed-text
+ollama pull llama3.2
+
+# For cloud AI
+agent config ai openai --api-key sk-...
+```
+
+### Completion Message
+
+```
+🎉 You're all set!
+
+Quick reference:
+  agent start          — Start a session
+  agent end            — End and extract insights
+  agent memory add     — Save knowledge manually
+  agent context        — Retrieve relevant memories
+  agent status         — View dashboard
+  agent doctor         — Health checks
+
+Need help? Run /akit-help anytime.
+
+📚 Full docs: agent --help
+```
