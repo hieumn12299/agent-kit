@@ -36,7 +36,7 @@
     }
   },
   "bin": {
-    "agent": "./dist/index.js"
+    "agent": "./bin/agent.js"
   },
   "engines": {
     "node": ">=20"
@@ -70,6 +70,7 @@
   "license": "MIT",
   "files": [
     "dist",
+    "bin",
     "templates",
     "README.md",
     "HUONG-DAN.md",
