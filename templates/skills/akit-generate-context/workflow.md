@@ -139,7 +139,7 @@ Update based on feedback.
 
 Offer to save key rules as agent-kit memories:
 ```bash
-agent memory add --title "Project conventions" --content "{summary}" --type convention
+/akit-memory save — or create file in .agent/memories/project/
 ```
 
 This ensures the rules are also available through `agent context`.

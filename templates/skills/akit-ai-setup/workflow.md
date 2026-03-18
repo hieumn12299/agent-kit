@@ -79,7 +79,7 @@ ollama pull nomic-embed-text    # For embeddings (semantic search)
 ollama pull llama3.2            # For completions (categorization, insights)
 
 # 4. Configure agent-kit
-agent config ai ollama
+/akit-config (terminal: agent config ai ollama)
 ```
 
 **Model Recommendations:**
@@ -95,11 +95,11 @@ agent config ai ollama
 
 ```bash
 # Configure with API key
-agent config ai openai --api-key sk-your-key-here
+/akit-config (terminal: agent config ai openai --api-key sk-your-key-here)
 
 # Or set via environment variable
 export OPENAI_API_KEY=sk-your-key-here
-agent config ai openai
+/akit-config (terminal: agent config ai openai)
 ```
 
 **Models used:**
@@ -110,19 +110,19 @@ agent config ai openai
 
 ```bash
 # Check status
-agent status
+/akit-status (terminal: agent status)
 
 # Test semantic search
-agent memory add --title "Test memory" --content "TypeScript strict mode"
-agent context --query "strict typing"
+/akit-memory save — or create file in .agent/memories/project/
+/akit-context strict typing (terminal: agent context --query "strict typing")
 
 # Test auto-categorization
-agent memory add --title "We use ESM" --content "All imports use ESM syntax" --auto
+/akit-memory save — or create file in .agent/memories/project/ --auto
 
 # Test AI insights (needs active session with commits)
-agent start
+/akit-start (terminal: agent start)
 # ... make some commits ...
-agent end --ai
+/akit-end (terminal: agent end --ai)
 ```
 
 ### Step 4: Troubleshooting
@@ -154,8 +154,8 @@ ollama pull nomic-embed-text
 ✅ AI features configured!
 
 What's now available:
-  agent context --query "..."     — Semantic search (meaning-based)
-  agent memory add --auto         — AI suggests type + tags
+  /akit-context         --query "..."     — Semantic search (meaning-based)
+  /akit-memory save         — AI suggests type + tags
   agent end --ai                  — LLM-powered insight extraction
 
 💡 Tip: Semantic search improves as you add more memories.

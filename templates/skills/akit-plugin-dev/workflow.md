@@ -142,14 +142,14 @@ registry.register({
 
 ```bash
 # Verify plugin loads
-agent status  # Should show plugin in status
+/akit-status  # Should show plugin in status
 
 # Test lifecycle hooks
-agent memory add --title "Test" --content "Testing plugin"
+/akit-memory save — or create file in .agent/memories/project/
 # Should trigger onMemoryCreate
 
 # Test retriever
-agent context --query "test"
+/akit-context test (terminal: agent context --query "test")
 # Should include results from custom retriever
 ```
 

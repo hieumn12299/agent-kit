@@ -131,5 +131,5 @@ Votes:
 
 Offer to save key decisions as agent-kit memories:
 ```bash
-agent memory add --title "{decision}" --content "{rationale}" --type decision
+/akit-memory save — or create file in .agent/memories/project/
 ```

@@ -116,5 +116,5 @@ Findings: {critical} critical, {important} important, {suggestions} suggestions
 
 Offer to save significant findings as memories:
 ```bash
-agent memory add --type bug-learning --title "{finding}" --content "{details}"
+/akit-memory save — or create file in .agent/memories/project/
 ```

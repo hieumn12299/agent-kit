@@ -121,7 +121,7 @@ export default graph;
 
 Run via CLI:
 ```bash
-agent graph run my-workflow --input "task description"
+/akit-create-graph (terminal: agent graph run my-workflow --input "task description")
 ```
 
 ### Step 6: Common Patterns

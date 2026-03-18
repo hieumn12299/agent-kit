@@ -117,9 +117,18 @@ Acceptance Criteria: {all_pass_count}/{all_count} met
 
 ### Step 6: Save as Memory
 
-Offer to save key learnings:
-```bash
-agent memory add --title "Story: {title}" --content "{key decisions and patterns used}" --type decision
+Offer to save key learnings by creating a memory file:
+
+**File:** `.agent/memories/project/story-{kebab-title}.md`
+```yaml
+---
+id: "story-{kebab-title}"
+title: "Story: {title}"
+type: "decision"
+tags: [{relevant-tags}]
+createdAt: "{ISO date}"
+---
+{key decisions and patterns used during implementation}
 ```
 
 Update sprint status if applicable.

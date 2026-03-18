@@ -78,7 +78,7 @@ Available commands: agent --help
    2. Work on your code normally
    3. End session to extract insights: agent end
 
-   Or manually add: agent memory add --title "My first insight" --content "..."
+   Or manually add: /akit-memory save — or create file in .agent/memories/project/
 
 💡 Tip: Run /akit-memory-guide for memory best practices
 ```
@@ -90,7 +90,7 @@ Available commands: agent --help
 
    This enables:
    • Semantic search (find memories by meaning, not just keywords)
-   • Auto-categorization (agent memory add --auto)
+   • Auto-categorization (/akit-memory save)
    • Enhanced insights (agent end --ai)
 ```
 
@@ -105,7 +105,7 @@ Available commands: agent --help
 
 🧠 Memory Operations:
    agent memory list    — Browse all memories
-   agent memory add     — Save a new insight
+   /akit-memory           — Save a new insight
    agent context        — Retrieve relevant context
 
 🔧 Advanced:

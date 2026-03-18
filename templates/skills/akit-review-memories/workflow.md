@@ -121,7 +121,7 @@ Format findings as:
     → agent memory promote {id} --to knowledge
 
 ✅ Actions:
-  Fix all tag issues:  Run agent memory add --auto for each
+  Fix all tag issues:  Run /akit-memory save for each
   Delete stale:        agent memory delete <id>
   Promote candidates:  agent memory promote <id> --to knowledge
 ```

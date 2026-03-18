@@ -76,8 +76,8 @@ Present this overview:
 If the project has memories, run analysis:
 
 ```bash
-agent memory list
-agent stats
+/akit-memory list (terminal: agent memory list)
+/akit-status (terminal: agent stats)
 ```
 
 Look for:
@@ -148,7 +148,7 @@ Promote with: agent memory promote <id> --to knowledge
 
 If AI is configured:
 ```bash
-agent memory add --title "..." --content "..." --auto
+/akit-memory save — or create file in .agent/memories/project/ --auto
 ```
 
 The `--auto` flag uses AI to suggest the best type and tags.
@@ -167,9 +167,9 @@ The `--auto` flag uses AI to suggest the best type and tags.
 📚 Memory Guide Complete!
 
 Commands to remember:
-  agent memory add [--auto]    — Save with AI categorization
-  agent memory list             — Browse memories
-  agent memory promote <id>     — Promote to higher tier
-  agent memory delete <id>      — Remove outdated entries
+  /akit-memory save    — Save with AI categorization
+  /akit-memory list               — Browse memories
+  /akit-memory promote <id>     — Promote to higher tier
+  /akit-memory delete <id>      — Remove outdated entries
   /akit-review-memories         — Quality audit
 ```

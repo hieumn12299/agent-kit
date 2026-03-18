@@ -102,5 +102,5 @@ Tests:
   {test_count} new, {total} passing
 
 💡 Tip: Save useful patterns with:
-  agent memory add --type pattern --title "{pattern}"
+  /akit-memory save — or create file in .agent/memories/project/
 ```

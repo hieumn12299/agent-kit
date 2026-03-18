@@ -64,7 +64,7 @@ Verify: `agent --version` should show the installed version.
 
 Navigate to the project root and run:
 ```bash
-agent init
+/akit-onboard (terminal: agent init)
 ```
 
 **What happens:**
@@ -78,7 +78,7 @@ agent init
 ### Step 4: First Session
 
 ```bash
-agent start
+/akit-start (terminal: agent start)
 ```
 
 **Explain:**
@@ -94,13 +94,13 @@ Two paths:
 
 **Interactive:**
 ```bash
-agent memory add
+/akit-memory save
 ```
 Opens `$EDITOR` with a template.
 
 **Non-interactive (faster for demo):**
 ```bash
-agent memory add --title "Project conventions" --content "We use TypeScript strict mode with ESM imports"
+/akit-memory save — or create file in .agent/memories/project/
 ```
 
 **Verify:** `agent memory list` should show the new memory.
@@ -108,7 +108,7 @@ agent memory add --title "Project conventions" --content "We use TypeScript stri
 ### Step 6: End Session
 
 ```bash
-agent end
+/akit-end (terminal: agent end)
 ```
 
 **What happens:**
@@ -119,7 +119,7 @@ agent end
 ### Step 7: Retrieve Context
 
 ```bash
-agent context --query "conventions"
+/akit-context conventions (terminal: agent context --query "conventions")
 ```
 
 **Should return** the memory created in Step 5, ranked by relevance.
@@ -131,12 +131,12 @@ Ask: "Would you like to enable AI features? This adds semantic search, auto-cate
 If yes, invoke `/akit-ai-setup` or guide directly:
 ```bash
 # For local AI (free, private)
-agent config ai ollama
+/akit-config (terminal: agent config ai ollama)
 ollama pull nomic-embed-text
 ollama pull llama3.2
 
 # For cloud AI
-agent config ai openai --api-key sk-...
+/akit-config (terminal: agent config ai openai --api-key sk-...)
 ```
 
 ### Completion Message
@@ -145,12 +145,12 @@ agent config ai openai --api-key sk-...
 🎉 You're all set!
 
 Quick reference:
-  agent start          — Start a session
-  agent end            — End and extract insights
-  agent memory add     — Save knowledge manually
-  agent context        — Retrieve relevant memories
-  agent status         — View dashboard
-  agent doctor         — Health checks
+  /akit-start                  — Start a session
+  /akit-end                    — End and extract insights
+  /akit-memory           — Save knowledge manually
+  /akit-context                — Retrieve relevant memories
+  /akit-status                 — View dashboard
+  /akit-doctor                 — Health checks
 
 Need help? Run /akit-help anytime.
 

@@ -76,7 +76,7 @@ Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ### Session Start — What Happens
 
 ```bash
-agent start
+/akit-start (terminal: agent start)
 ```
 
 1. **Lock file created** — `.agent/.session.lock` prevents concurrent sessions
@@ -100,20 +100,20 @@ While your session is active:
 
 ```bash
 # Retrieve relevant memories
-agent context --query "authentication patterns"
+/akit-context authentication patterns (terminal: agent context --query "authentication patterns")
 
 # View current status
-agent status
+/akit-status (terminal: agent status)
 
 # Save something manually
-agent memory add --title "API quirk" --content "Rate limit is per-IP, not per-key"
+/akit-memory save — or create file in .agent/memories/project/
 ```
 
 ### Session End — Insight Extraction
 
 ```bash
 agent end          # Heuristic extraction (fast, no AI)
-agent end --ai     # AI-powered extraction (richer, needs AI config)
+/akit-end --ai (terminal: agent end --ai)     # AI-powered extraction (richer, needs AI config)
 ```
 
 **Heuristic mode** extracts from:
@@ -158,10 +158,10 @@ No data loss — session state is checkpointed to disk.
 
 ```
 agent start          — Begin session, load memories
-agent status         — View session state + stats
-agent context        — Retrieve relevant memories
-agent memory add     — Save insight manually
+/akit-status         — View session state + stats
+/akit-context        — Retrieve relevant memories
+/akit-memory           — Save insight manually
 agent end            — End with heuristic extraction
-agent end --ai       — End with AI-enhanced extraction
+/akit-end --ai (terminal: agent end --ai)       — End with AI-enhanced extraction
 agent export         — Export session summary
 ```
