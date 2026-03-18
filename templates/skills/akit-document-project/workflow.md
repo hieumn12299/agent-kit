@@ -20,6 +20,24 @@ Read `.agent/config.yaml` and find:
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
 ✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
+### Memory Save (IDE Mode)
+When saving memories from IDE slash commands, create the file directly:
+- Path: `.agent/memories/project/{id}.md`
+- Format: YAML frontmatter + markdown content
+- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
+
+```yaml
+---
+id: "{id}"
+title: "{title}"
+type: "{decision|pattern|convention|insight|bug-learning}"
+tags: [{tags}]
+createdAt: "{ISO date}"
+---
+{content}
+```
+
+Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
 ## MEMORY INTEGRATION
