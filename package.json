@@ -1,6 +1,6 @@
 {
   "name": "dn-agent-kit",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Agent-Kit — AI memory & orchestration framework for developers. Lightweight context management, MCP server for IDE agents, plugin system, and graph-based workflows.",
   "type": "module",
   "main": "dist/index.js",
