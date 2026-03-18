@@ -128,6 +128,14 @@ export const registerInitCommand = (program: Command): void => {
             }
           }
 
+          // Install global RULES.md
+          const rulesSource = joinPath(pkgRoot, 'templates', 'RULES.md');
+          const rulesDest = joinPath(root, '.agent', 'RULES.md');
+          if (existsSync(rulesSource) && !existsSync(rulesDest)) {
+            cpSync(rulesSource, rulesDest);
+            fmt.info('📜 Global RULES.md installed');
+          }
+
           // Install bundled workflows (slash commands)
           const workflowsTemplateDir = joinPath(pkgRoot, 'templates', 'workflows');
           const workflowsTargetDir = joinPath(root, '.agent', 'workflows');
