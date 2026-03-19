@@ -1,8 +1,7 @@
-# Review Memories — Quality Audit
+# Review Memories
 
-**Goal:** Audit all project memories for quality issues and suggest improvements.
-
-**Your Role:** You are an adversarial reviewer. Find problems, suggest fixes. Be thorough but actionable.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,128 +11,26 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+This workflow has 4 steps. Each step is a SEPARATE file.
+You MUST read and execute ONE step at a time.
+
+| Step | File | Action |
+|------|------|--------|
+| 1 | `steps/step-01-load-all-memories.md` | Load All Memories |
+| 2 | `steps/step-02-run-quality-checks.md` | Run Quality Checks |
+| 3 | `steps/step-03-present-report.md` | Present Report |
+| 4 | `steps/step-04-offer-automated-fixes.md` | Offer Automated Fixes |
+
 ---
-## EXECUTION
 
-### Step 1: Load All Memories
+## START NOW
 
-Read all `.md` files from:
-- `.agent/project/`
-- `.agent/knowledge/`
-- `.agent/private/`
+**Read `.agent/skills/akit-review-memories/steps/step-01-load-all-memories.md` and follow its instructions.**
 
-Parse YAML frontmatter + content for each memory.
-
-### Step 2: Run Quality Checks
-
-#### Check 1: Stale Memories (>30 days)
-- Flag memories with timestamp older than 30 days
-- Ask: "Is this still accurate? Technologies and patterns change."
-- Suggest: review and update or delete
-
-#### Check 2: Missing/Generic Tags
-- Flag memories with only `["manual"]` or `[]` tags
-- Suggest specific tags based on content analysis
-- If AI configured, offer `--auto` re-categorization
-
-#### Check 3: Short Content (<20 words)
-- Flag memories with very short content
-- These often lack context needed for good retrieval
-- Suggest: expand with reasoning, examples, or links
-
-#### Check 4: Duplicate Content
-- Compare memory titles and content for similarity
-- Flag pairs with >80% word overlap
-- Suggest: merge or delete redundant entries
-
-#### Check 5: Type Mismatches
-- Analyze if the memory type matches its content
-- Example: A "convention" that reads like a "decision"
-- Suggest correct type
-
-#### Check 6: Conflicting Memories
-- Find memories that contradict each other
-- Example: Memory A says "use JWT" but Memory B says "use session cookies"
-- Flag for resolution: which is current?
-
-#### Check 7: Promotion Candidates
-- Find project memories that could be universal knowledge
-- Patterns, conventions, and integrations are often promotable
-- Suggest: `agent memory promote <id> --to knowledge`
-
-### Step 3: Present Report
-
-Format findings as:
-
-```
-🔍 Memory Quality Report
-═══════════════════════════════════════
-
-📊 Stats: {total} memories ({project} project, {knowledge} knowledge, {private} private)
-
-⚠️ Issues Found: {count}
-
-🕰️ Stale ({stale_count}):
-  • {id}: "{title}" — last updated {days} days ago
-    → Review or delete
-
-🏷️ Missing Tags ({tag_count}):
-  • {id}: "{title}" — only has ["manual"]
-    → Suggested tags: [{suggestions}]
-
-📝 Too Short ({short_count}):
-  • {id}: "{title}" — only {words} words
-    → Expand with context
-
-🔄 Duplicates ({dup_count}):
-  • {id1} ↔ {id2}: {similarity}% overlap
-    → Merge or delete one
-
-⬆️ Promote ({promote_count}):
-  • {id}: "{title}" — universal pattern
-    → agent memory promote {id} --to knowledge
-
-✅ Actions:
-  Fix all tag issues:  Run /akit-memory save for each
-  Delete stale:        agent memory delete <id>
-  Promote candidates:  agent memory promote <id> --to knowledge
-```
-
-### Step 4: Offer Automated Fixes
-
-Ask the user which issues to fix:
-1. "Should I suggest tags for untagged memories?"
-2. "Should I identify exact commands to run?"
-3. "Want me to create a cleanup script?"
-
-Provide specific `agent memory` commands for each fix.
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

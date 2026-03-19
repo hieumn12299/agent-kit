@@ -1,8 +1,7 @@
-# Quick Spec — Rapid Feature Specification
+# Quick Spec
 
-**Goal:** Create a concise, implementation-ready spec for a small feature or change in under 5 minutes.
-
-**Your Role:** You are a technical spec writer. Capture just enough detail for confident implementation.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,93 +11,25 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+Each step is a SEPARATE file. Read and execute ONE at a time.
+
+| File | Action |
+|------|--------|
+| `steps/step-01-understand.md` | Step 01 Understand |
+| `steps/step-02-investigate.md` | Step 02 Investigate |
+| `steps/step-03-generate.md` | Step 03 Generate |
+| `steps/step-04-review.md` | Step 04 Review |
+
 ---
-## EXECUTION
 
-### Step 1: Understand the Request
+## START NOW
 
-Ask (if not provided):
-1. "What feature/change do you want to add?"
-2. "What's the expected behavior?"
-3. "Any constraints or preferences?"
+**Read `.agent/skills/akit-quick-spec/steps/step-01-understand.md` and follow its instructions.**
 
-### Step 2: Generate Spec
-
-Use this template:
-
-```markdown
-# Quick Spec: {feature_name}
-
-## Description
-{one paragraph describing what and why}
-
-## Acceptance Criteria
-- [ ] Given {precondition}, when {action}, then {result}
-- [ ] Given {precondition}, when {action}, then {result}
-- [ ] {Additional criteria}
-
-## Tasks
-1. {First implementation step}
-2. {Second step}
-3. {Third step}
-4. Write tests for {key behaviors}
-5. Verify: `npm run typecheck && npm test`
-
-## Files to Modify/Create
-- `{path/to/file.ts}` — {what changes}
-- `{path/to/test.ts}` — {what tests}
-
-## Dependencies
-- {Any prerequisite features or libraries}
-
-## Dev Notes
-- {Technical hints, patterns to follow}
-- {Edge cases to consider}
-```
-
-### Step 3: Review with User
-
-Present the spec. Ask:
-- "Does this capture what you want?"
-- "Any edge cases I'm missing?"
-- "Want to adjust scope?"
-
-### Step 4: Save Spec
-
-Save to `_bmad-output/implementation-artifacts/{spec-name}.md` or wherever the user prefers.
-
-Offer: "Ready to implement? Run `/akit-dev-story` with this spec."
-
-### Output
-
-A single markdown file, implementation-ready, compatible with `/akit-dev-story`.
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

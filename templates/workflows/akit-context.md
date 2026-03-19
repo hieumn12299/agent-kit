@@ -4,7 +4,9 @@ description: Search and retrieve relevant memories for current context
 
 ## Context Retrieval
 
-Read `.agent/config.yaml` for `communicationLanguage` and `responseStyle`. Respond in configured language.
+1. Read `.agent/RULES.md` for global rules
+2. Read `.agent/config.yaml` for language, style, and output settings
+3. Respond in configured language and style.
 
 ### Usage
 User says `/akit-context {query}` or just `/akit-context`.

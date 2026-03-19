@@ -2,30 +2,22 @@
 description: Plan a sprint from epics and stories. Use when the user says "sprint planning" or "plan the sprint"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-sprint-planning/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-sprint-planning/steps/step-01-review-backlog.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Review Backlog
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Capacity
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Review Backlog |
+| 2 | Capacity |
+| 3 | Select Stories |
+| 4 | Generate Sprint Plan |
 
-### Step 3: Select Stories
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Generate Sprint Plan
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-sprint-planning/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-sprint-planning/steps/step-01-review-backlog.md`**

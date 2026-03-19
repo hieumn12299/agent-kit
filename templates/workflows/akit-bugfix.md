@@ -1,50 +1,25 @@
 ---
-description: Fix bugs with structured investigation — reproduce, analyze, fix, verify, save learning
+description: Fix bugs with structured investigation — reproduce, analyze, fix, verify, save learning. Use when user says "fix bug", "something broken", "this error", "debug this".
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-bugfix/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-bugfix/steps/step-01-bug-report.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: 🐛 Bug Report
-Gather: actual vs expected behavior, repro steps, error messages, context
-Output the 🐛 Bug Report template
-```
-➡️ Proceed to Step 2: Reproduce? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: 🔄 Reproduce
-Follow repro steps, confirm bug exists, note exact error
-```
-➡️ Proceed to Step 3: Root Cause Analysis? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 🐛 Bug Report — gather info |
+| 2 | 🔄 Reproduce — confirm bug |
+| 3 | 🔍 Root Cause — investigate |
+| 4 | 🔧 Fix — implement |
+| 5 | ✅ Verify — test |
+| 6 | 📝 Save — memory |
 
-### Step 3: 🔍 Root Cause Analysis
-5 checks: read error, trace flow, check recent changes, check assumptions, narrow scope
-Output: file, function, line, root cause, category, evidence
-```
-⛔ DO NOT write fix code until this step is confirmed
-➡️ Proceed to Step 4: Fix? [Y/n]
-```
-
-### Step 4: 🔧 Fix Implementation
-Smallest fix, add guard, check related code, add test
-Show diff
-```
-➡️ Proceed to Step 5: Verify? [Y/n]
-```
-
-### Step 5: ✅ Verify
-Run repro → PASS, run tests → PASS, check regressions
-```
-⛔ If FAIL → go back to Step 3
-➡️ Proceed to Step 6: Save Learning? [Y/n]
-```
-
-### Step 6: 📝 Save Bug Learning
-Create memory file in `.agent/memories/project/bugfix-{id}.md`
-
-**Full workflow: `.agent/skills/akit-bugfix/workflow.md`**
-**Checklist: `.agent/skills/akit-bugfix/investigation-checklist.csv`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-bugfix/steps/step-01-bug-report.md`**

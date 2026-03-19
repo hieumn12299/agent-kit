@@ -1,36 +1,25 @@
 ---
-description: Quick development — implement a small feature or change. Use when the user says "implement this" or 
+description: Quick development — implement a small feature or change. Use when the user says "implement this" or "quick dev"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-quick-dev/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-quick-dev/steps/step-01-mode-detection.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Understand Request
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Plan (Brief)
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Mode Detection |
+| 2 | 02 Context Gathering |
+| 3 | 03 Execute |
+| 4 | 04 Self Check |
+| 5 | 05 Adversarial Review |
+| 6 | 06 Resolve Findings |
 
-### Step 3: Implement
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Verify
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Summary
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-quick-dev/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-quick-dev/steps/step-01-mode-detection.md`**

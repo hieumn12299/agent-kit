@@ -1,41 +1,25 @@
 ---
-description: Design and implement StateGraph workflows for complex multi-step operations. Use when user says "cre
+description: Design and implement StateGraph workflows for complex multi-step operations. Use when user says "create a workflow" or "
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-create-graph/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-create-graph/steps/step-01-understand-stategraph.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Understand StateGraph
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Identify the Workflow
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Understand StateGraph |
+| 2 | Identify the Workflow |
+| 3 | Design the Graph |
+| 4 | Implement |
+| 5 | Register as CLI Graph |
+| 6 | Common Patterns |
 
-### Step 3: Design the Graph
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Implement
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Register as CLI Graph
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 6: Common Patterns
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-create-graph/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-create-graph/steps/step-01-understand-stategraph.md`**

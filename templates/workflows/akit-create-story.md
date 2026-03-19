@@ -1,32 +1,23 @@
 ---
-description: Create a detailed story spec ready for implementation. Use when the user says "create story" or "det
+description: Create a detailed story spec ready for implementation. Use when the user says "create story" or "detail this story"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-create-story/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-create-story/steps/step-01-identify-story.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Identify Story
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Gather Context
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Identify Story |
+| 2 | Gather Context |
+| 3 | Create Story Spec |
+| 4 | Review |
 
-### Step 3: Create Story Spec
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Review
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-create-story/workflow.md`**
-**Data: `.agent/skills/akit-create-story/template.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-create-story/steps/step-01-identify-story.md`**

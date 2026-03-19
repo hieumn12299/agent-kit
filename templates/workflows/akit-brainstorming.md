@@ -2,36 +2,26 @@
 description: Facilitate brainstorming sessions. Use when the user says "brainstorm" or "help me ideate"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-brainstorming/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-brainstorming/steps/step-01-session-setup.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Define Topic
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Choose Technique
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Session Setup |
+| 2 | 01B Continue |
+| 3 | 02A User Selected |
+| 4 | 02B Ai Recommended |
+| 5 | 02C Random Selection |
+| 6 | 02D Progressive Flow |
+| 7 | 03 Technique Execution |
+| 8 | 04 Idea Organization |
 
-### Step 3: Generate Ideas
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Evaluate & Prioritize
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Select & Next Steps
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-brainstorming/workflow.md`**
-**Data: `.agent/skills/akit-brainstorming/techniques.csv`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-brainstorming/steps/step-01-session-setup.md`**

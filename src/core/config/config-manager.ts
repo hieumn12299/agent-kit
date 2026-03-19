@@ -9,9 +9,12 @@ import { ensureStructure, getAgentPath, CONFIG_FILE } from '../../utils/file-sys
  * User preferences passed during `agent init`.
  */
 export interface UserPreferences {
+  projectName?: string;
   userName?: string;
   communicationLanguage?: string;
+  documentOutputLanguage?: string;
   responseStyle?: 'formal' | 'casual' | 'technical';
+  outputFolder?: string;
 }
 
 /**
@@ -38,10 +41,16 @@ export const createConfig = async (
     const structResult = await ensureStructure(root);
     if (!structResult.ok) return err(structResult.error);
 
+    const outputFolder = prefs.outputFolder ?? './_akit-output';
     const config: Record<string, unknown> = {
+      projectName: prefs.projectName,
       userName: prefs.userName,
       communicationLanguage: prefs.communicationLanguage ?? 'English',
+      documentOutputLanguage: prefs.documentOutputLanguage ?? prefs.communicationLanguage ?? 'English',
       responseStyle: prefs.responseStyle ?? 'technical',
+      outputFolder,
+      planningArtifacts: `${outputFolder}/planning-artifacts`,
+      implementationArtifacts: `${outputFolder}/implementation-artifacts`,
     };
 
     const parsed = ProjectConfigSchema.safeParse(config);
@@ -109,9 +118,12 @@ export const resetConfig = async (root: string): Promise<Result<ProjectConfig, E
     const existing = await loadConfig(root);
     const configPath = join(getAgentPath(root), CONFIG_FILE);
     const resetData = {
+      projectName: existing.ok ? existing.value.projectName : undefined,
       userName: existing.ok ? existing.value.userName : undefined,
       communicationLanguage: existing.ok ? existing.value.communicationLanguage : 'English',
+      documentOutputLanguage: existing.ok ? existing.value.documentOutputLanguage : undefined,
       responseStyle: existing.ok ? existing.value.responseStyle : 'technical',
+      outputFolder: existing.ok ? existing.value.outputFolder : './_akit-output',
     };
 
     const parsed = ProjectConfigSchema.safeParse(resetData);
@@ -142,9 +154,12 @@ export const deleteConfig = async (root: string): Promise<Result<void, Error>> =
  * Get a flat key-value map of config for display.
  */
 export const configToEntries = (config: ProjectConfig): [string, string][] => [
+  ['projectName', config.projectName ?? '(not set)'],
   ['userName', config.userName ?? '(not set)'],
   ['communicationLanguage', config.communicationLanguage],
+  ['documentOutputLanguage', config.documentOutputLanguage ?? config.communicationLanguage],
   ['responseStyle', config.responseStyle],
+  ['outputFolder', config.outputFolder],
 ];
 
 /**
@@ -168,9 +183,14 @@ const escapeYaml = (s: string): string =>
 
 const configToYaml = (config: ProjectConfig): string => {
   const lines: string[] = [];
+  if (config.projectName) lines.push(`projectName: "${escapeYaml(config.projectName)}"`);
   if (config.userName) lines.push(`userName: "${escapeYaml(config.userName)}"`);
   lines.push(`communicationLanguage: "${escapeYaml(config.communicationLanguage)}"`);
+  if (config.documentOutputLanguage) lines.push(`documentOutputLanguage: "${escapeYaml(config.documentOutputLanguage)}"`);
   lines.push(`responseStyle: "${config.responseStyle}"`);
+  lines.push(`outputFolder: "${escapeYaml(config.outputFolder)}"`);
+  if (config.planningArtifacts) lines.push(`planningArtifacts: "${escapeYaml(config.planningArtifacts)}"`);
+  if (config.implementationArtifacts) lines.push(`implementationArtifacts: "${escapeYaml(config.implementationArtifacts)}"`);
   lines.push('');
   return lines.join('\n');
 };

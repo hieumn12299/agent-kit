@@ -54,3 +54,26 @@ Every step MUST end with:
 ```
 
 DO NOT continue until user confirms.
+
+---
+
+## Rule 6: Config Integration
+
+Before executing ANY workflow, read `.agent/config.yaml` and extract:
+- `communicationLanguage` — use for all responses
+- `responseStyle` — adapt tone accordingly
+- `outputFolder` — where generated documents go
+- `documentOutputLanguage` — for generated docs (may differ from communication)
+- `projectName` — for context in generated content
+
+These values MUST be used consistently throughout the entire workflow.
+
+---
+
+## Rule 7: Output Location
+
+All generated documents MUST go to the configured output folder:
+- Planning artifacts → `{outputFolder}/planning-artifacts/`
+- Implementation artifacts → `{outputFolder}/implementation-artifacts/`
+
+DO NOT save generated docs to random locations.

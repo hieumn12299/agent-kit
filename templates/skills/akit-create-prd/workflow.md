@@ -1,8 +1,7 @@
-# Create PRD — Product Requirements Document
+# Create Prd
 
-**Goal:** Create a comprehensive PRD through structured collaborative discovery with the user.
-
-**Your Role:** You are a product-focused PM facilitator. Guide the user through structured sections to produce a complete, actionable PRD.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,153 +11,36 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
-
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
----
-
-## MEMORY INTEGRATION
-
-Before starting:
-- Read memories from `.agent/memories/` or run `agent context "product requirements"` to load relevant existing memories
-- Reference any existing architecture, project brief, or convention memories
-
-After completion:
-- Save key decisions: Create file in `.agent/memories/project/` with type `decision` and title "PRD: {title}"`
-- Save scope boundaries: Create file in `.agent/memories/project/` with type `decision` and title "Scope: {boundaries}"`
 
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+Each step is a SEPARATE file. Read and execute ONE at a time.
+
+| File | Action |
+|------|--------|
+| `steps/step-01-init.md` | Step 01 Init |
+| `steps/step-01b-continue.md` | Step 01B Continue |
+| `steps/step-02-discovery.md` | Step 02 Discovery |
+| `steps/step-02b-vision.md` | Step 02B Vision |
+| `steps/step-02c-executive-summary.md` | Step 02C Executive Summary |
+| `steps/step-03-success.md` | Step 03 Success |
+| `steps/step-04-journeys.md` | Step 04 Journeys |
+| `steps/step-05-domain.md` | Step 05 Domain |
+| `steps/step-06-innovation.md` | Step 06 Innovation |
+| `steps/step-07-project-type.md` | Step 07 Project Type |
+| `steps/step-08-scoping.md` | Step 08 Scoping |
+| `steps/step-09-functional.md` | Step 09 Functional |
+| `steps/step-10-nonfunctional.md` | Step 10 Nonfunctional |
+| `steps/step-11-polish.md` | Step 11 Polish |
+| `steps/step-12-complete.md` | Step 12 Complete |
+
 ---
-## EXECUTION
 
-### Step 1: Product Overview
+## START NOW
 
-Ask the user collaboratively:
-1. "What is the product/feature name?"
-2. "What problem does it solve? Who has this problem?"
-3. "What is the desired outcome? How will we measure success?"
+**Read `.agent/skills/akit-create-prd/steps/step-01-init.md` and follow its instructions.**
 
-Write the **Product Overview** section.
-
-### Step 2: User Personas & Stories
-
-Guide through:
-1. "Who are the primary users? Describe 2-3 personas."
-2. "What are the main user stories? (As a ___, I want ___, so that ___)"
-3. "Are there secondary users or admin personas?"
-
-Write the **Users & Stories** section.
-
-### Step 3: Functional Requirements
-
-For each user story:
-1. "What must the system do to fulfill this story?"
-2. "What are the acceptance criteria?"
-3. "Any edge cases to handle?"
-
-Write as a numbered list with priority (Must/Should/Could).
-
-### Step 4: Non-Functional Requirements
-
-Ask about:
-1. **Performance** — Response times, throughput
-2. **Security** — Auth, data protection, compliance
-3. **Scalability** — Expected load, growth
-4. **Reliability** — Uptime, error handling
-5. **Compatibility** — Browsers, devices, integrations
-
-### Step 5: Technical Constraints
-
-1. "Any technology stack requirements or restrictions?"
-2. "Integration points with existing systems?"
-3. "Data migration needs?"
-4. "Infrastructure constraints?"
-
-### Step 6: Scope & Timeline
-
-1. "What is IN scope for v1? What is explicitly OUT of scope?"
-2. "Target timeline or milestones?"
-3. "Known risks or dependencies?"
-
-### Step 7: Generate PRD Document
-
-Output the complete PRD to a file:
-
-```markdown
-# PRD: {Product Name}
-
-> Generated by agent-kit | Date: {date}
-
-## 1. Product Overview
-{content}
-
-## 2. Users & Personas
-{content}
-
-## 3. User Stories
-{content}
-
-## 4. Functional Requirements
-{content}
-
-## 5. Non-Functional Requirements
-{content}
-
-## 6. Technical Constraints
-{content}
-
-## 7. Scope & Timeline
-{content}
-
-## 8. Success Metrics
-{content}
-
-## 9. Open Questions
-{content}
-```
-
-### Step 8: Review & Refine
-
-Present to user:
-- "Is anything missing?"
-- "Any requirements to add or remove?"
-- "Priority adjustments needed?"
-
-Update based on feedback.
-
-### Completion
-
-```
-✅ PRD created!
-
-Suggested next steps:
-  /akit-create-architecture  — Design technical architecture
-  /akit-create-epics         — Break into epics and stories
-  /akit-brainstorming        — Explore alternative approaches
-```
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

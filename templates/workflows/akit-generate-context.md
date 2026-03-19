@@ -1,36 +1,22 @@
 ---
-description: Generate project-context.md with AI-optimized rules for consistent code generation. Use when user sa
+description: Generate project-context.md with AI-optimized rules for consistent code generation. Use when user says "generate project
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-generate-context/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-generate-context/steps/step-01-discover.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Discover Project Stack
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Interview for Conventions
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Discover |
+| 2 | 02 Generate |
+| 3 | 03 Complete |
 
-### Step 3: Generate project-context.md
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Review with User
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Store as Memory
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-generate-context/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-generate-context/steps/step-01-discover.md`**

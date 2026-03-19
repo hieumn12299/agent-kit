@@ -4,7 +4,9 @@ description: End coding session and capture insights
 
 ## End Session
 
-Read `.agent/config.yaml` for `communicationLanguage` and `responseStyle`. Respond in the configured language and style.
+1. Read `.agent/RULES.md` for global rules
+2. Read `.agent/config.yaml` for language, style, and output settings
+3. Respond in configured language and style.
 
 ### Actions:
 1. **Review changes** — Run `git diff --stat` to see what changed this session

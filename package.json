@@ -50,6 +50,7 @@
     "lint": "eslint src/",
     "format": "prettier --write .",
     "typecheck": "tsc --noEmit",
+    "validate:workflows": "bash scripts/validate-workflows.sh",
     "prepublishOnly": "npm run typecheck && npm run test && npm run build"
   },
   "keywords": [

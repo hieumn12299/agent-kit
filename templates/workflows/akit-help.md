@@ -1,31 +1,23 @@
 ---
-description: Context-aware help for agent-kit. Analyzes project state and recommends next steps. Use when user sa
+description: Context-aware help for agent-kit. Analyzes project state and recommends next steps. Use when user says "what should I do
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-help/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-help/steps/step-01-detect-project-state.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Detect Project State
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Assess Current Context
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Detect Project State |
+| 2 | Assess Current Context |
+| 3 | Route to Recommendation |
+| 4 | Answer Direct Questions |
 
-### Step 3: Route to Recommendation
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Answer Direct Questions
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-help/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-help/steps/step-01-detect-project-state.md`**

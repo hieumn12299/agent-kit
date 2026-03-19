@@ -1,31 +1,23 @@
 ---
-description: Adversarial review of memory quality. Finds stale, duplicate, conflicting, and poorly tagged memorie
+description: Adversarial review of memory quality. Finds stale, duplicate, conflicting, and poorly tagged memories. Use when user say
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-review-memories/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-review-memories/steps/step-01-load-all-memories.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Load All Memories
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Run Quality Checks
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Load All Memories |
+| 2 | Run Quality Checks |
+| 3 | Present Report |
+| 4 | Offer Automated Fixes |
 
-### Step 3: Present Report
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Offer Automated Fixes
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-review-memories/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-review-memories/steps/step-01-load-all-memories.md`**

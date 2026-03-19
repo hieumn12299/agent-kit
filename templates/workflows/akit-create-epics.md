@@ -1,36 +1,23 @@
 ---
-description: Break requirements into epics and user stories. Use when the user says "create epics" or "break into
+description: Break requirements into epics and user stories. Use when the user says "create epics" or "break into stories"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-create-epics/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-create-epics/steps/step-01-validate-prerequisites.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Load Source Material
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Identify Epics
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Validate Prerequisites |
+| 2 | 02 Design Epics |
+| 3 | 03 Create Stories |
+| 4 | 04 Final Validation |
 
-### Step 3: Break Into Stories
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Dependency Mapping
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Output
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-create-epics/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-create-epics/steps/step-01-validate-prerequisites.md`**

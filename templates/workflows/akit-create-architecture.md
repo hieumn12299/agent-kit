@@ -1,37 +1,28 @@
 ---
-description: Create technical architecture design. Use when the user says "create architecture" or "design the sy
+description: Create technical architecture design. Use when the user says "create architecture" or "design the system"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-create-architecture/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-create-architecture/steps/step-01-init.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Gather Requirements
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Technology Stack Selection
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Init |
+| 2 | 01B Continue |
+| 3 | 02 Context |
+| 4 | 03 Starter |
+| 5 | 04 Decisions |
+| 6 | 05 Patterns |
+| 7 | 06 Structure |
+| 8 | 07 Validation |
+| 9 | 08 Complete |
 
-### Step 3: System Design
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Design Decisions
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Generate Architecture Document
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-create-architecture/workflow.md`**
-**Data: `.agent/skills/akit-create-architecture/template.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-create-architecture/steps/step-01-init.md`**

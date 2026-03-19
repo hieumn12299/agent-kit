@@ -4,7 +4,9 @@ description: Show project and session status dashboard
 
 ## Status Dashboard
 
-Read `.agent/config.yaml` for `communicationLanguage` and `responseStyle`. Respond in the configured language and style.
+1. Read `.agent/RULES.md` for global rules
+2. Read `.agent/config.yaml` for language, style, and output settings
+3. Respond in configured language and style.
 
 ### Actions:
 1. **Check git status** — Branch, uncommitted changes, recent commits

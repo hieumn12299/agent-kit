@@ -1,41 +1,24 @@
 ---
-description: Edit and update existing PRD, architecture, epic, or story specs with impact analysis and version tr
+description: Edit and update existing PRD, architecture, epic, or story specs with impact analysis and version tracking. Use when use
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-edit-spec/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-edit-spec/steps/step-e-01-discovery.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Identify Spec
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Understand Changes
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | E 01 Discovery |
+| 2 | E 01B Legacy Conversion |
+| 3 | E 02 Review |
+| 4 | E 03 Edit |
+| 5 | E 04 Complete |
 
-### Step 3: Impact Analysis
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Apply Changes
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Validate
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 6: Save Decision Memory
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-edit-spec/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-edit-spec/steps/step-e-01-discovery.md`**

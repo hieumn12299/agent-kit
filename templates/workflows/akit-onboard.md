@@ -1,51 +1,27 @@
 ---
-description: Guided agent-kit onboarding flow. Walk through install, init, first session, first memory, and AI se
+description: Guided agent-kit onboarding flow. Walk through install, init, first session, first memory, and AI setup. Use when user s
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-onboard/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-onboard/steps/step-01-check-prerequisites.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Check Prerequisites
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Install agent-kit
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Check Prerequisites |
+| 2 | Install agent-kit |
+| 3 | Initialize Project |
+| 4 | First Session |
+| 5 | Create First Memory |
+| 6 | End Session |
+| 7 | Retrieve Context |
+| 8 | (Optional) AI Setup |
 
-### Step 3: Initialize Project
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: First Session
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Create First Memory
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 6: End Session
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 7: Retrieve Context
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 8: (Optional) AI Setup
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-onboard/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-onboard/steps/step-01-check-prerequisites.md`**

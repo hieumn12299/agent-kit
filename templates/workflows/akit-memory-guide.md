@@ -1,36 +1,24 @@
 ---
-description: Interactive guide for memory organization best practices. Analyzes current memories and suggests imp
+description: Interactive guide for memory organization best practices. Analyzes current memories and suggests improvements. Use when 
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-memory-guide/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-memory-guide/steps/step-01-explain-the-memory-model.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Explain the Memory Model
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Analyze Current Memories
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Explain the Memory Model |
+| 2 | Analyze Current Memories |
+| 3 | Guide Best Practices |
+| 4 | Auto-Categorization |
+| 5 | Maintenance Tips |
 
-### Step 3: Guide Best Practices
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Auto-Categorization
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Maintenance Tips
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-memory-guide/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-memory-guide/steps/step-01-explain-the-memory-model.md`**

@@ -1,41 +1,25 @@
 ---
-description: Plugin development wizard. Build custom retrievers, lifecycle hooks, and memory processors. Use when
+description: Plugin development wizard. Build custom retrievers, lifecycle hooks, and memory processors. Use when user says "create a
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-plugin-dev/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-plugin-dev/steps/step-01-understand-the-plugin-api.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Understand the Plugin API
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Choose Plugin Type
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Understand the Plugin API |
+| 2 | Choose Plugin Type |
+| 3 | Generate Plugin Scaffold |
+| 4 | Register Plugin |
+| 5 | Test the Plugin |
+| 6 | Best Practices |
 
-### Step 3: Generate Plugin Scaffold
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Register Plugin
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Test the Plugin
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 6: Best Practices
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-plugin-dev/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-plugin-dev/steps/step-01-understand-the-plugin-api.md`**

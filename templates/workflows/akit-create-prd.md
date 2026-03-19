@@ -1,54 +1,34 @@
 ---
-description: Create a Product Requirements Document through collaborative discovery
+description: Create a Product Requirements Document through collaborative discovery. Use when the user says "create a PRD" or "lets d
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-create-prd/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-create-prd/steps/step-01-init.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Product Overview
-Ask: product name, problem, desired outcome, success metrics
-```
-➡️ Proceed to Step 2? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: User Personas & Stories
-Ask: primary users (2-3 personas), user stories, secondary users
-```
-➡️ Proceed to Step 3? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Init |
+| 2 | 01B Continue |
+| 3 | 02 Discovery |
+| 4 | 02B Vision |
+| 5 | 02C Executive Summary |
+| 6 | 03 Success |
+| 7 | 04 Journeys |
+| 8 | 05 Domain |
+| 9 | 06 Innovation |
+| 10 | 07 Project Type |
+| 11 | 08 Scoping |
+| 12 | 09 Functional |
+| 13 | 10 Nonfunctional |
+| 14 | 11 Polish |
+| 15 | 12 Complete |
 
-### Step 3: Functional Requirements
-For each story: what must system do, acceptance criteria, edge cases
-```
-➡️ Proceed to Step 4? [Y/n]
-```
-
-### Step 4: Non-Functional Requirements
-Performance, security, scalability, reliability, compatibility
-```
-➡️ Proceed to Step 5? [Y/n]
-```
-
-### Step 5: Technical Constraints
-Stack requirements, integration points, data migration, infrastructure
-```
-➡️ Proceed to Step 6? [Y/n]
-```
-
-### Step 6: Scope & Timeline
-In/out scope, milestones, risks, dependencies
-```
-➡️ Proceed to Step 7? [Y/n]
-```
-
-### Step 7: Generate PRD Document
-Output complete PRD to file
-
-### Step 8: Review & Refine
-Present to user, iterate
-
-**Full workflow: `.agent/skills/akit-create-prd/workflow.md`**
-**Template: `.agent/skills/akit-create-prd/template.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-create-prd/steps/step-01-init.md`**

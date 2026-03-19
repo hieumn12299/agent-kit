@@ -1,36 +1,24 @@
 ---
-description: Step-by-step AI provider setup with model recommendations and verification. Use when user says "setu
+description: Step-by-step AI provider setup with model recommendations and verification. Use when user says "setup AI features" or "c
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-ai-setup/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-ai-setup/steps/step-01-choose-provider.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Choose Provider
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2a: Ollama Setup
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Choose Provider |
+| 2 | a: Ollama Setup |
+| 3 | b: OpenAI Setup |
+| 4 | Verify Setup |
+| 5 | Troubleshooting |
 
-### Step 2b: OpenAI Setup
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 3: Verify Setup
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Troubleshooting
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-ai-setup/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-ai-setup/steps/step-01-choose-provider.md`**

@@ -1,8 +1,7 @@
-# Quick Dev — Rapid Implementation
+# Quick Dev
 
-**Goal:** Implement a small feature, fix, or change quickly following project conventions.
-
-**Your Role:** You are a senior developer who writes clean, tested code. Implement efficiently without over-engineering.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,98 +11,27 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
-
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
----
-
-## MEMORY INTEGRATION
-
-Before starting:
-- Read memories from `.agent/memories/` or run `agent context "{feature description}"` to load relevant patterns/conventions
-- Check `.agent/project-context.md` for coding rules
-
-After completion:
-- Save key insights: create memory file with type `insight` in `.agent/memories/project/`
 
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+Each step is a SEPARATE file. Read and execute ONE at a time.
+
+| File | Action |
+|------|--------|
+| `steps/step-01-mode-detection.md` | Step 01 Mode Detection |
+| `steps/step-02-context-gathering.md` | Step 02 Context Gathering |
+| `steps/step-03-execute.md` | Step 03 Execute |
+| `steps/step-04-self-check.md` | Step 04 Self Check |
+| `steps/step-05-adversarial-review.md` | Step 05 Adversarial Review |
+| `steps/step-06-resolve-findings.md` | Step 06 Resolve Findings |
+
 ---
-## EXECUTION
 
-### Step 1: Understand Request
+## START NOW
 
-Ask: "What do you need implemented?" Accept:
-- A quick spec file
-- A verbal description
-- A bug report
-- A refactoring request
+**Read `.agent/skills/akit-quick-dev/steps/step-01-mode-detection.md` and follow its instructions.**
 
-### Step 2: Plan (Brief)
-
-Quick assessment — no lengthy planning:
-1. Which files to modify/create?
-2. What patterns to follow?
-3. Need tests?
-4. Any risks?
-
-Present in 2-3 bullet points. Get user confirmation.
-
-### Step 3: Implement
-
-Follow these rules:
-- ✅ Match existing code style exactly
-- ✅ Follow project error handling patterns
-- ✅ Add types (TypeScript) or validation
-- ✅ Write tests alongside code
-- ❌ Don't refactor unrelated code
-- ❌ Don't add unnecessary abstractions
-
-### Step 4: Verify
-
-```bash
-npm run typecheck   # Must pass
-npm test            # Must pass
-```
-
-Fix any issues before declaring done.
-
-### Step 5: Summary
-
-```
-✅ Implementation complete!
-
-Changes:
-  {file} — {what changed}
-
-Tests:
-  {test_count} new, {total} passing
-
-💡 Tip: Save useful patterns with:
-  /akit-memory save — or create file in .agent/memories/project/
-```
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

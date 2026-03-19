@@ -6,6 +6,21 @@ import { handleCommandError } from '../error-handler.js';
 import { isNonInteractive } from '../env.js';
 import { getOutputMode } from '../utils.js';
 import { userInfo } from 'node:os';
+import { readFile } from 'node:fs/promises';
+import { join, basename } from 'node:path';
+
+
+/**
+ * Auto-detect project name from package.json or folder basename.
+ */
+const detectProjectName = async (root: string): Promise<string> => {
+  try {
+    const raw = await readFile(join(root, 'package.json'), 'utf-8');
+    const pkg = JSON.parse(raw) as { name?: string };
+    if (pkg.name) return pkg.name;
+  } catch { /* no package.json */ }
+  return basename(root);
+};
 
 export const registerInitCommand = (program: Command): void => {
   program
@@ -36,12 +51,23 @@ export const registerInitCommand = (program: Command): void => {
           }
         }
 
+        // Auto-detect project name
+        const detectedName = await detectProjectName(root);
+
         // Collect user preferences
+        let projectName = detectedName;
         let userName: string | undefined;
         let communicationLanguage = 'English';
+        let documentOutputLanguage: string | undefined;
         let responseStyle: 'formal' | 'casual' | 'technical' = 'technical';
+        let outputFolder = './_akit-output';
 
         if (!nonInteractive) {
+          projectName = await input({
+            message: 'Project name?',
+            default: detectedName,
+          });
+
           userName = await input({
             message: 'Your name?',
             default: userInfo().username,
@@ -59,6 +85,18 @@ export const registerInitCommand = (program: Command): void => {
             ],
           });
 
+          const sameLang = await select({
+            message: 'Document output language?',
+            choices: [
+              { name: `Same as communication (${communicationLanguage})`, value: communicationLanguage },
+              { name: 'English', value: 'English' },
+              { name: 'Vietnamese', value: 'Vietnamese' },
+              { name: 'Japanese', value: 'Japanese' },
+              { name: 'Other (set later via agent config)', value: communicationLanguage },
+            ],
+          });
+          documentOutputLanguage = sameLang;
+
           responseStyle = await select({
             message: 'Response style?',
             choices: [
@@ -67,9 +105,15 @@ export const registerInitCommand = (program: Command): void => {
               { name: 'Formal — structured, detailed', value: 'formal' as const },
             ],
           });
+
+          outputFolder = await input({
+            message: 'Output folder for generated documents?',
+            default: './_akit-output',
+          });
         } else {
           // Non-interactive defaults
           try { userName = userInfo().username; } catch { /* skip */ }
+          documentOutputLanguage = communicationLanguage;
         }
 
         // Preview
@@ -77,22 +121,47 @@ export const registerInitCommand = (program: Command): void => {
         fmt.table(
           ['Setting', 'Value'],
           [
+            ['Project', projectName],
             ['Name', userName ?? '(not set)'],
             ['Language', communicationLanguage],
+            ['Doc Language', documentOutputLanguage ?? communicationLanguage],
             ['Style', responseStyle],
+            ['Output', outputFolder],
           ],
         );
         fmt.newline();
 
         // Create config
         const configResult = await createConfig(root, {
+          projectName,
           userName,
           communicationLanguage,
+          documentOutputLanguage,
           responseStyle,
+          outputFolder,
         });
         if (!configResult.ok) {
           handleCommandError(fmt, configResult.error);
           return;
+        }
+
+        // Create output folder structure
+        try {
+          const { mkdirSync, writeFileSync, existsSync } = await import('node:fs');
+          const planningDir = join(root, outputFolder, 'planning-artifacts');
+          const implDir = join(root, outputFolder, 'implementation-artifacts');
+
+          if (!existsSync(planningDir)) {
+            mkdirSync(planningDir, { recursive: true });
+            writeFileSync(join(planningDir, '.gitkeep'), '', 'utf-8');
+          }
+          if (!existsSync(implDir)) {
+            mkdirSync(implDir, { recursive: true });
+            writeFileSync(join(implDir, '.gitkeep'), '', 'utf-8');
+          }
+          fmt.info(`📂 Output folders created: ${outputFolder}/`);
+        } catch {
+          // Non-critical: output folders are optional, don't block init
         }
 
         // Install bundled skills
@@ -128,12 +197,37 @@ export const registerInitCommand = (program: Command): void => {
             }
           }
 
-          // Install global RULES.md
+          // Install or update global RULES.md
           const rulesSource = joinPath(pkgRoot, 'templates', 'RULES.md');
           const rulesDest = joinPath(root, '.agent', 'RULES.md');
-          if (existsSync(rulesSource) && !existsSync(rulesDest)) {
-            cpSync(rulesSource, rulesDest);
-            fmt.info('📜 Global RULES.md installed');
+          if (existsSync(rulesSource)) {
+            if (existsSync(rulesDest)) {
+              const { readFileSync } = await import('node:fs');
+              const existing = readFileSync(rulesDest, 'utf-8');
+              const latest = readFileSync(rulesSource, 'utf-8');
+              if (existing !== latest && !nonInteractive) {
+                const { confirm } = await import('@inquirer/prompts');
+                const doUpdate = await confirm({
+                  message: '📜 RULES.md has updates. Apply latest version?',
+                  default: true,
+                });
+                if (doUpdate) {
+                  cpSync(rulesSource, rulesDest);
+                  fmt.info('📜 RULES.md updated to latest version');
+                }
+              }
+            } else {
+              cpSync(rulesSource, rulesDest);
+              fmt.info('📜 Global RULES.md installed');
+            }
+          }
+
+          // Install or update agents.yaml (agent personas for party-mode)
+          const agentsSource = joinPath(pkgRoot, 'templates', 'agents.yaml');
+          const agentsDest = joinPath(root, '.agent', 'agents.yaml');
+          if (existsSync(agentsSource) && !existsSync(agentsDest)) {
+            cpSync(agentsSource, agentsDest);
+            fmt.info('🎭 Agent manifest installed (agents.yaml)');
           }
 
           // Install bundled workflows (slash commands)
@@ -166,7 +260,8 @@ export const registerInitCommand = (program: Command): void => {
         fmt.newline();
         fmt.success('Agent-Kit initialized!');
         fmt.newline();
-        fmt.info('📁 All data stays local in .agent/');
+        fmt.info(`📁 Project: ${projectName}`);
+        fmt.info(`📂 Output: ${outputFolder}/`);
         fmt.info('🔒 Working memories are gitignored');
         fmt.info(`🧩 Skills & workflows installed — language: ${communicationLanguage}`);
         fmt.newline();

@@ -1,45 +1,23 @@
 ---
-description: Multi-layer adversarial code review
+description: Review code changes adversarially. Use when the user says "review this code" or "run code review"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-code-review/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-code-review/steps/step-01-gather-context.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Identify Changes
-Ask user what to review → show file list
-```
-➡️ Proceed to Step 2? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Layer 1 — Blind Bug Hunter
-Scan for: null access, off-by-one, uncaught async, resource leaks, races, type mismatches
-```
-➡️ Proceed to Step 3? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Gather Context |
+| 2 | 02 Review |
+| 3 | 03 Triage |
+| 4 | 04 Present |
 
-### Step 3: Layer 2 — Edge Case Hunter
-Walk branching paths: boundary values, error paths, concurrent access, state transitions
-```
-➡️ Proceed to Step 4? [Y/n]
-```
-
-### Step 4: Layer 3 — Acceptance Auditor
-Check project standards, test coverage, error handling patterns, documentation
-```
-➡️ Proceed to Step 5? [Y/n]
-```
-
-### Step 5: Triage Findings
-Categorize: 🔴 Critical | 🟡 Important | 🟢 Suggestion | ℹ️ Note
-```
-➡️ Proceed to Step 6? [Y/n]
-```
-
-### Step 6: Report & Save
-Generate report + save findings as memory file in `.agent/memories/project/`
-
-**Full workflow details: `.agent/skills/akit-code-review/workflow.md`**
-**Review checklist data: `.agent/skills/akit-code-review/review-checklist.csv`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-code-review/steps/step-01-gather-context.md`**

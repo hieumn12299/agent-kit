@@ -1,26 +1,22 @@
 ---
-description: Check sprint progress and surface risks. Use when the user says "sprint status" or "how is the sprin
+description: Check sprint progress and surface risks. Use when the user says "sprint status" or "how is the sprint going"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-sprint-status/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-sprint-status/steps/step-01-load-sprint-data.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Load Sprint Data
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Generate Dashboard
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Load Sprint Data |
+| 2 | Generate Dashboard |
+| 3 | Recommendations |
 
-### Step 3: Recommendations
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-sprint-status/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-sprint-status/steps/step-01-load-sprint-data.md`**

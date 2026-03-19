@@ -4,7 +4,9 @@ description: Export session summary for sharing or review
 
 ## Export Summary
 
-Read `.agent/config.yaml` for `communicationLanguage` and `responseStyle`. Respond in configured language.
+1. Read `.agent/RULES.md` for global rules
+2. Read `.agent/config.yaml` for language, style, and output settings
+3. Respond in configured language and style.
 
 ### Actions:
 1. **Gather data** — Recent git commits, memories created, decisions made

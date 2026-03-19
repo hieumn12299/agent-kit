@@ -38,9 +38,11 @@ describe('config-manager', () => {
   describe('createConfig', () => {
     it('creates .agent/ and writes config.yaml', async () => {
       const result = await createConfig(testDir, {
+        projectName: 'test-project',
         userName: 'hieunm',
         communicationLanguage: 'Vietnamese',
         responseStyle: 'technical',
+        outputFolder: './_akit-output',
       });
       expect(result.ok).toBe(true);
 
@@ -49,6 +51,8 @@ describe('config-manager', () => {
       expect(content).toContain('hieunm');
       expect(content).toContain('Vietnamese');
       expect(content).toContain('technical');
+      expect(content).toContain('test-project');
+      expect(content).toContain('_akit-output');
     });
 
     it('returns valid ProjectConfig with user preferences', async () => {
@@ -71,6 +75,16 @@ describe('config-manager', () => {
       if (result.ok) {
         expect(result.value.communicationLanguage).toBe('English');
         expect(result.value.responseStyle).toBe('technical');
+        expect(result.value.outputFolder).toBe('./_akit-output');
+      }
+    });
+
+    it('derives planningArtifacts and implementationArtifacts from outputFolder', async () => {
+      const result = await createConfig(testDir, { outputFolder: './custom-output' });
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value.planningArtifacts).toBe('./custom-output/planning-artifacts');
+        expect(result.value.implementationArtifacts).toBe('./custom-output/implementation-artifacts');
       }
     });
   });
@@ -133,14 +147,19 @@ describe('config-manager', () => {
   describe('configToEntries', () => {
     it('flattens config to key-value pairs', () => {
       const entries = configToEntries({
+        projectName: 'test',
         userName: 'dev',
         communicationLanguage: 'Vietnamese',
         responseStyle: 'casual',
+        outputFolder: './_akit-output',
       });
       expect(entries).toEqual([
+        ['projectName', 'test'],
         ['userName', 'dev'],
         ['communicationLanguage', 'Vietnamese'],
+        ['documentOutputLanguage', 'Vietnamese'],
         ['responseStyle', 'casual'],
+        ['outputFolder', './_akit-output'],
       ]);
     });
 
@@ -148,19 +167,43 @@ describe('config-manager', () => {
       const entries = configToEntries({
         communicationLanguage: 'English',
         responseStyle: 'technical',
+        outputFolder: './_akit-output',
       });
-      expect(entries[0]).toEqual(['userName', '(not set)']);
+      expect(entries[0]).toEqual(['projectName', '(not set)']);
+      expect(entries[1]).toEqual(['userName', '(not set)']);
+    });
+  });
+
+  describe('backward compatibility', () => {
+    it('loads old config without new fields using defaults', async () => {
+      // Simulate old config format (only 3 fields)
+      const { writeFile, mkdir } = await import('node:fs/promises');
+      const agentDir = getAgentPath(testDir);
+      await mkdir(agentDir, { recursive: true });
+      await writeFile(
+        join(agentDir, 'config.yaml'),
+        'userName: "olduser"\ncommunicationLanguage: "English"\nresponseStyle: "technical"\n',
+        'utf-8',
+      );
+
+      const result = await loadConfig(testDir);
+      expect(result.ok).toBe(true);
+      if (result.ok) {
+        expect(result.value.userName).toBe('olduser');
+        expect(result.value.outputFolder).toBe('./_akit-output'); // default
+        expect(result.value.projectName).toBeUndefined(); // optional
+      }
     });
   });
 
   describe('getConfigValue', () => {
     it('gets top-level value', () => {
-      const config = { userName: 'x', communicationLanguage: 'English', responseStyle: 'technical' as const };
+      const config = { userName: 'x', communicationLanguage: 'English', responseStyle: 'technical' as const, outputFolder: './_akit-output' };
       expect(getConfigValue(config, 'userName')).toBe('x');
     });
 
     it('returns undefined for unknown key', () => {
-      const config = { communicationLanguage: 'English', responseStyle: 'technical' as const };
+      const config = { communicationLanguage: 'English', responseStyle: 'technical' as const, outputFolder: './_akit-output' };
       expect(getConfigValue(config, 'nonexistent')).toBeUndefined();
     });
   });

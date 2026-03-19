@@ -1,8 +1,7 @@
-# Agent-Kit Help — Context-Aware Routing
+# Help
 
-**Goal:** Analyze the current project state and recommend the most useful next action for the user.
-
-**Your Role:** You are an agent-kit expert guide. You understand the full lifecycle: initialization → sessions → memories → retrieval → AI features → plugins → graphs.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,134 +11,26 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+This workflow has 4 steps. Each step is a SEPARATE file.
+You MUST read and execute ONE step at a time.
+
+| Step | File | Action |
+|------|------|--------|
+| 1 | `steps/step-01-detect-project-state.md` | Detect Project State |
+| 2 | `steps/step-02-assess-current-context.md` | Assess Current Context |
+| 3 | `steps/step-03-route-to-recommendation.md` | Route to Recommendation |
+| 4 | `steps/step-04-answer-direct-questions.md` | Answer Direct Questions |
+
 ---
-## EXECUTION
 
-### Step 1: Detect Project State
+## START NOW
 
-Check these indicators in order:
+**Read `.agent/skills/akit-help/steps/step-01-detect-project-state.md` and follow its instructions.**
 
-1. **Not initialized?** → Check if `.agent/` directory exists
-2. **No memories?** → Check `.agent/project/` for `.md` files
-3. **No AI configured?** → Check `.agent/config.yaml` for `ai:` section
-4. **Active session?** → Check `.agent/.session.lock` exists
-5. **Has memories but no sessions?** → First-time user after manual setup
-
-### Step 2: Assess Current Context
-
-- What files is the user working on?
-- What was the last conversation about?
-- Are there any error messages or issues mentioned?
-
-### Step 3: Route to Recommendation
-
-Based on state, recommend ONE primary action and list alternatives:
-
-#### If NOT initialized:
-```
-🚀 Get started with agent-kit!
-   Run: agent init
-   Or invoke: /akit-onboard for a guided setup
-
-Available commands: agent --help
-```
-
-#### If initialized but NO memories:
-```
-📝 Start capturing knowledge!
-   1. Start a session: agent start
-   2. Work on your code normally
-   3. End session to extract insights: agent end
-
-   Or manually add: /akit-memory save — or create file in .agent/memories/project/
-
-💡 Tip: Run /akit-memory-guide for memory best practices
-```
-
-#### If has memories but NO AI:
-```
-🤖 Supercharge with AI features!
-   Run: /akit-ai-setup for guided AI configuration
-
-   This enables:
-   • Semantic search (find memories by meaning, not just keywords)
-   • Auto-categorization (/akit-memory save)
-   • Enhanced insights (agent end --ai)
-```
-
-#### If fully configured:
-```
-✅ agent-kit is fully configured! Here's what you can do:
-
-📋 Session Management:
-   agent start          — Start a coding session
-   agent end [--ai]     — End session with insight extraction
-   agent status         — View project dashboard
-
-🧠 Memory Operations:
-   agent memory list    — Browse all memories
-   /akit-memory           — Save a new insight
-   agent context        — Retrieve relevant context
-
-🔧 Advanced:
-   /akit-plugin-dev     — Build a custom plugin
-   /akit-create-graph   — Design a workflow graph
-   /akit-review-memories — Audit memory quality
-
-📊 Health:
-   agent doctor         — Run health checks
-   agent stats          — View analytics
-```
-
-### Step 4: Answer Direct Questions
-
-If the user asks a specific question about agent-kit:
-- Answer directly from your knowledge of agent-kit's features
-- Reference specific commands and options
-- Suggest relevant skills for deeper exploration
-
-### Available Skills Reference
-
-| Skill | When to suggest |
-|-------|----------------|
-| `/akit-onboard` | New user, first setup |
-| `/akit-generate-context` | Project context rules |
-| `/akit-memory-guide` | Memory organization |
-| `/akit-review-memories` | Memory quality audit |
-| `/akit-session-flow` | Session lifecycle |
-| `/akit-ai-setup` | AI configuration |
-| `/akit-plugin-dev` | Custom plugin development |
-| `/akit-create-graph` | Workflow graph design |
-| `/akit-dev-story` | Story implementation |
-| `/akit-quick-spec` | Quick feature spec |
-| `/akit-party-mode` | Multi-persona discussion |
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

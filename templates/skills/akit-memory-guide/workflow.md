@@ -1,8 +1,7 @@
-# Memory Guide — Best Practices for Knowledge Organization
+# Memory Guide
 
-**Goal:** Teach the user how to organize memories effectively for maximum retrieval quality.
-
-**Your Role:** You are a knowledge management expert. Help the user understand memory types, tiers, tagging, and curation strategies.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,167 +11,27 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+This workflow has 5 steps. Each step is a SEPARATE file.
+You MUST read and execute ONE step at a time.
+
+| Step | File | Action |
+|------|------|--------|
+| 1 | `steps/step-01-explain-the-memory-model.md` | Explain the Memory Model |
+| 2 | `steps/step-02-analyze-current-memories.md` | Analyze Current Memories |
+| 3 | `steps/step-03-guide-best-practices.md` | Guide Best Practices |
+| 4 | `steps/step-04-auto-categorization.md` | Auto-Categorization |
+| 5 | `steps/step-05-maintenance-tips.md` | Maintenance Tips |
+
 ---
-## EXECUTION
 
-### Step 1: Explain the Memory Model
+## START NOW
 
-Present this overview:
+**Read `.agent/skills/akit-memory-guide/steps/step-01-explain-the-memory-model.md` and follow its instructions.**
 
-```
-🧠 Agent-Kit Memory Architecture
-
-┌─────────────────────────────────────────┐
-│  TIERS (where memories live)            │
-├─────────────────────────────────────────┤
-│  knowledge  — Proven, universal truths  │
-│  project    — Project-specific context  │
-│  working    — Current session only      │
-│  private    — Personal, never shared    │
-└─────────────────────────────────────────┘
-
-┌─────────────────────────────────────────┐
-│  TYPES (what kind of knowledge)         │
-├─────────────────────────────────────────┤
-│  decision    — "We chose X because Y"   │
-│  pattern     — "Always do X this way"   │
-│  convention  — "Name files like X"      │
-│  insight     — "I learned that X"       │
-│  bug-learning— "X breaks when Y"        │
-│  integration — "Service X requires Y"   │
-│  preference  — "I prefer X over Y"      │
-└─────────────────────────────────────────┘
-```
-
-### Step 2: Analyze Current Memories
-
-If the project has memories, run analysis:
-
-```bash
-/akit-memory list (terminal: agent memory list)
-/akit-status (terminal: agent stats)
-```
-
-Look for:
-- **Type distribution** — Are all memories "insight"? Suggest variety
-- **Tier distribution** — Everything in "project"? Suggest promotions to knowledge
-- **Tag quality** — Missing tags? Generic tags like "manual"?
-- **Stale memories** — Older than 30 days without updates?
-- **Length** — Too short (< 10 words)? Too long (> 500 words)?
-
-### Step 3: Guide Best Practices
-
-#### Writing Good Memories
-
-✅ **Good:**
-```yaml
-title: "JWT tokens require refresh rotation every 7 days"
-type: decision
-tags: [auth, jwt, security]
-```
-Content: "We use JWT refresh tokens with 7-day rotation. Access tokens expire in 15 minutes. This prevents token theft from being permanent. Implemented in auth-middleware.ts."
-
-❌ **Bad:**
-```yaml
-title: "Auth stuff"
-type: insight
-tags: [manual]
-```
-Content: "Fixed auth."
-
-#### Memory Type Decision Tree
-
-```
-Is it about WHY you chose something?
-  → decision
-
-Is it a recurring pattern you follow?
-  → pattern
-
-Is it a naming/formatting/style rule?
-  → convention
-
-Is it something you learned today?
-  → insight
-
-Is it about a bug and how to avoid it?
-  → bug-learning
-
-Is it about how external services work?
-  → integration
-
-Is it about personal workflow preference?
-  → preference
-```
-
-#### Tier Promotion Path
-
-```
-working → project → knowledge
-
-- working:   Temporary, session-scoped
-- project:   Useful for this project
-- knowledge: Universal truth, useful everywhere
-
-Promote with: agent memory promote <id> --to knowledge
-```
-
-### Step 4: Auto-Categorization
-
-If AI is configured:
-```bash
-/akit-memory save — or create file in .agent/memories/project/ --auto
-```
-
-The `--auto` flag uses AI to suggest the best type and tags.
-
-### Step 5: Maintenance Tips
-
-1. **Weekly review:** Run `/akit-review-memories` to find stale/duplicate entries
-2. **Session discipline:** End sessions with `agent end` to capture insights
-3. **Promote aggressively:** If a memory is useful across projects, promote to knowledge
-4. **Tag consistently:** Use lowercase, hyphenated tags (e.g., `error-handling`, not `Error Handling`)
-5. **Delete freely:** Outdated memories hurt retrieval quality
-
-### Completion
-
-```
-📚 Memory Guide Complete!
-
-Commands to remember:
-  /akit-memory save    — Save with AI categorization
-  /akit-memory list               — Browse memories
-  /akit-memory promote <id>     — Promote to higher tier
-  /akit-memory delete <id>      — Remove outdated entries
-  /akit-review-memories         — Quality audit
-```
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

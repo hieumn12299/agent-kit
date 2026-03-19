@@ -1,36 +1,24 @@
 ---
-description: Document an existing codebase for AI context. Use when the user says "document this project" or "gen
+description: Document an existing codebase for AI context. Use when the user says "document this project" or "generate project docs"
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-document-project/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-document-project/steps/step-01-explore-project-structure.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Explore Project Structure
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Identify Tech Stack
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Explore Project Structure |
+| 2 | Identify Tech Stack |
+| 3 | Analyze Code Patterns |
+| 4 | Document Key Files |
+| 5 | Generate Documentation |
 
-### Step 3: Analyze Code Patterns
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Document Key Files
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Generate Documentation
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-document-project/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-document-project/steps/step-01-explore-project-structure.md`**

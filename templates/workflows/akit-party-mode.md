@@ -1,36 +1,22 @@
 ---
-description: Multi-persona discussion with agent-kit specialist agents. Collaborative review, debate design, and 
+description: Multi-persona discussion with agent-kit specialist agents. Collaborative review, debate design, and evaluate quality. Us
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-party-mode/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-party-mode/steps/step-01-agent-loading.md`
+3. Follow ONLY that step's instructions
+4. **STOP and wait for user confirmation before reading next step**
 
-### Step 1: Set the Topic
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Facilitate Discussion
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | 01 Agent Loading |
+| 2 | 02 Discussion Orchestration |
+| 3 | 03 Graceful Exit |
 
-### Step 3: Discussion Rules
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Summary
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Save Insights
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-party-mode/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-party-mode/steps/step-01-agent-loading.md`**

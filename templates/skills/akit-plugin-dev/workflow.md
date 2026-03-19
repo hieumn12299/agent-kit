@@ -1,8 +1,7 @@
-# Plugin Development — Build Custom Extensions
+# Plugin Dev
 
-**Goal:** Guide the user through creating an agent-kit plugin from concept to registration.
-
-**Your Role:** You are a plugin architecture expert. Help design, implement, and test custom plugins.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,154 +11,28 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
 
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+This workflow has 6 steps. Each step is a SEPARATE file.
+You MUST read and execute ONE step at a time.
+
+| Step | File | Action |
+|------|------|--------|
+| 1 | `steps/step-01-understand-the-plugin-api.md` | Understand the Plugin API |
+| 2 | `steps/step-02-choose-plugin-type.md` | Choose Plugin Type |
+| 3 | `steps/step-03-generate-plugin-scaffold.md` | Generate Plugin Scaffold |
+| 4 | `steps/step-04-register-plugin.md` | Register Plugin |
+| 5 | `steps/step-05-test-the-plugin.md` | Test the Plugin |
+| 6 | `steps/step-06-best-practices.md` | Best Practices |
+
 ---
-## EXECUTION
 
-### Step 1: Understand the Plugin API
+## START NOW
 
-```typescript
-// Plugin interface
-interface AgentPlugin {
-  name: string;
-  version: string;
+**Read `.agent/skills/akit-plugin-dev/steps/step-01-understand-the-plugin-api.md` and follow its instructions.**
 
-  // Lifecycle hooks (all optional)
-  onMemoryCreate?: (memory: MemoryEntry) => Promise<void>;
-  onMemoryDelete?: (id: string) => Promise<void>;
-  onSessionStart?: (sessionId: string) => Promise<void>;
-  onSessionEnd?: (sessionId: string) => Promise<void>;
-
-  // Custom retriever (optional)
-  retrieve?: (query: string) => Promise<ScoredMemory[]>;
-}
-```
-
-### Step 2: Choose Plugin Type
-
-Ask the user what they want to build:
-
-1. **Lifecycle Hook** — React to events (memory create/delete, session start/end)
-2. **Custom Retriever** — Add a new retrieval source (database, API, vector store)
-3. **Memory Processor** — Transform memories on create (auto-tag, validate, enrich)
-4. **Full Plugin** — Combination of the above
-
-### Step 3: Generate Plugin Scaffold
-
-Based on choice, generate a starter file:
-
-#### Lifecycle Hook Example
-```typescript
-// .agent/plugins/my-notifier.ts
-import type { AgentPlugin, MemoryEntry } from 'agent-kit/plugins';
-
-export const myNotifierPlugin: AgentPlugin = {
-  name: 'my-notifier',
-  version: '1.0.0',
-
-  async onMemoryCreate(memory: MemoryEntry) {
-    console.log(`📝 New memory: ${memory.title}`);
-    // Send webhook, log to file, etc.
-  },
-
-  async onSessionEnd(sessionId: string) {
-    console.log(`✅ Session ${sessionId} ended`);
-    // Generate report, sync to external tool, etc.
-  },
-};
-```
-
-#### Custom Retriever Example
-```typescript
-// .agent/plugins/my-retriever.ts
-import type { AgentPlugin, ScoredMemory } from 'agent-kit/plugins';
-
-export const myRetrieverPlugin: AgentPlugin = {
-  name: 'my-retriever',
-  version: '1.0.0',
-
-  async retrieve(query: string): Promise<ScoredMemory[]> {
-    // Fetch from external source (database, API, etc.)
-    const results = await fetchFromMyDatabase(query);
-    return results.map(r => ({
-      memory: { ...r, tier: 'knowledge' as const },
-      score: r.relevance,
-    }));
-  },
-};
-```
-
-### Step 4: Register Plugin
-
-```typescript
-// .agent/plugins/index.ts
-import { registry } from 'agent-kit/plugins';
-import { myNotifierPlugin } from './my-notifier.js';
-
-registry.register(myNotifierPlugin);
-```
-
-Or register programmatically:
-```typescript
-import { registry } from 'agent-kit/plugins';
-
-registry.register({
-  name: 'inline-plugin',
-  version: '1.0.0',
-  async onMemoryCreate(memory) {
-    // inline implementation
-  },
-});
-```
-
-### Step 5: Test the Plugin
-
-```bash
-# Verify plugin loads
-/akit-status  # Should show plugin in status
-
-# Test lifecycle hooks
-/akit-memory save — or create file in .agent/memories/project/
-# Should trigger onMemoryCreate
-
-# Test retriever
-/akit-context test (terminal: agent context --query "test")
-# Should include results from custom retriever
-```
-
-### Step 6: Best Practices
-
-1. **Fire-and-forget** — Plugin hooks shouldn't block core operations
-2. **Error isolation** — Wrap in try/catch, never crash core
-3. **Idempotent** — Hooks may fire multiple times (retries)
-4. **Lightweight** — Keep processing fast (<100ms)
-5. **No side effects on core** — Don't modify memory data in hooks
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**

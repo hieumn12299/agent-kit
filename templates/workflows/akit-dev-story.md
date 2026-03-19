@@ -1,41 +1,25 @@
 ---
-description: Execute story implementation following a story spec file. Use when user says "dev this story" or "im
+description: Execute story implementation following a story spec file. Use when user says "dev this story" or "implement the next sto
 ---
 
-> ⚠️ **MANDATORY**: Read `.agent/RULES.md` first. Then read and follow `.agent/skills/akit-dev-story/workflow.md` step by step.
+> ⚠️ **THIS IS A STEP-BY-STEP WORKFLOW. DO NOT FREESTYLE.**
 
-## Quick Reference — Steps You MUST Follow
+## YOUR IMMEDIATE ACTION
 
-**DO NOT freestyle. Follow these steps IN ORDER. Stop after each step.**
+1. Read `.agent/RULES.md`
+2. Read `.agent/skills/akit-dev-story/steps/step-01-load-story-spec.md`
+3. Follow ONLY Step 1 instructions
+4. **STOP and wait for user confirmation before reading Step 2**
 
-### Step 1: Load Story Spec
-```
-➡️ Proceed to next step? [Y/n]
-```
+## Workflow Overview (DO NOT execute — just reference)
 
-### Step 2: Pre-flight Checks
-```
-➡️ Proceed to next step? [Y/n]
-```
+| Step | What |
+|------|------|
+| 1 | Load Story Spec |
+| 2 | Pre-flight Checks |
+| 3 | Implementation Loop |
+| 4 | Verify Acceptance Criteria |
+| 5 | Summary |
+| 6 | Save as Memory |
 
-### Step 3: Implementation Loop
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 4: Verify Acceptance Criteria
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 5: Summary
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-### Step 6: Save as Memory
-```
-➡️ Proceed to next step? [Y/n]
-```
-
-**Full workflow: `.agent/skills/akit-dev-story/workflow.md`**
+**⛔ Start with Step 1 ONLY. Read: `.agent/skills/akit-dev-story/steps/step-01-load-story-spec.md`**

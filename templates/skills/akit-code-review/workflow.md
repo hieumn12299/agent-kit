@@ -1,8 +1,7 @@
-# Code Review — Multi-Layer Adversarial Review
+# Code Review
 
-**Goal:** Review code changes using parallel review layers to catch bugs, edge cases, and spec violations.
-
-**Your Role:** You are a senior code reviewer. Apply three review lenses: Blind Hunter, Edge Case Hunter, and Acceptance Auditor.
+> **⚠️ THIS WORKFLOW USES SEPARATE STEP FILES.**
+> **Read ONLY one step file at a time. Do NOT read ahead.**
 
 ---
 
@@ -12,112 +11,25 @@ Read `.agent/config.yaml` and find:
 - `communicationLanguage` — the language to use
 - `responseStyle` — the interaction style
 
-### Response Style Guide
-- **technical** → Concise, code-focused senior peer. Minimal explanation, maximum code.
-- **casual** → Friendly companion. Uses emoji, simple explanations, encouraging tone.
-- **formal** → Structured mentor. Detailed explanations, step-by-step guidance, thorough.
-
 ✅ YOU MUST communicate in `{communicationLanguage}` at all times.
-✅ All output, guidance, menus, and explanations MUST use `{communicationLanguage}`.
-
-### Memory Save (IDE Mode)
-When saving memories from IDE slash commands, create the file directly:
-- Path: `.agent/memories/project/{id}.md`
-- Format: YAML frontmatter + markdown content
-- Generate a short kebab-case ID (e.g. `jwt-rotation-decision`)
-
-```yaml
----
-id: "{id}"
-title: "{title}"
-type: "{decision|pattern|convention|insight|bug-learning}"
-tags: [{tags}]
-createdAt: "{ISO date}"
----
-{content}
-```
-
-Do NOT suggest `agent memory add` CLI commands — write the file directly.
----
-
-## MEMORY INTEGRATION
-
-Before starting: Read memories from `.agent/memories/` or run `agent context "conventions patterns code style"` to load project rules.
-After completion: Save findings as `--type bug-learning` memories.
 
 ---
 
+## HOW THIS WORKFLOW WORKS
 
-## ⚠️ CRITICAL: SEQUENTIAL EXECUTION RULESnn> **YOU MUST FOLLOW THESE RULES. VIOLATION IS UNACCEPTABLE.**n>n> 1. Execute steps **ONE AT A TIME**, in strict ordern> 2. **STOP after each step** and show the formatted output templaten> 3. **WAIT for user confirmation** before proceeding to the next stepn> 4. **NEVER skip ahead** — complete current step before starting nextn> 5. **NEVER combine steps** — each step gets its own responsen> 6. After each step, end with: `➡️ Proceed to Step {N+1}? [Y/n]`n
+Each step is a SEPARATE file. Read and execute ONE at a time.
+
+| File | Action |
+|------|--------|
+| `steps/step-01-gather-context.md` | Step 01 Gather Context |
+| `steps/step-02-review.md` | Step 02 Review |
+| `steps/step-03-triage.md` | Step 03 Triage |
+| `steps/step-04-present.md` | Step 04 Present |
+
 ---
-## EXECUTION
 
-### Step 1: Identify Changes
+## START NOW
 
-Ask: "What should I review?" Options:
-- A specific file or set of files
-- Recent git changes: `git diff`
-- A PR or branch diff: `git diff main...feature`
+**Read `.agent/skills/akit-code-review/steps/step-01-gather-context.md` and follow its instructions.**
 
-### Step 2: Layer 1 — Blind Bug Hunter
-
-Review without context. Look for:
-- 🐛 Null/undefined access
-- 🐛 Off-by-one errors
-- 🐛 Uncaught async errors
-- 🐛 Resource leaks (unclosed handles, missing cleanup)
-- 🐛 Race conditions
-- 🐛 Type mismatches
-
-### Step 3: Layer 2 — Edge Case Hunter
-
-Walk every branching path:
-- Boundary conditions (empty arrays, max values, zero)
-- Error paths (network failure, invalid input, timeout)
-- Concurrent access patterns
-- State transitions that could fail
-
-### Step 4: Layer 3 — Acceptance Auditor
-
-Check against project standards:
-- Follows conventions from `.agent/project-context.md`
-- Tests cover new functionality
-- Error handling matches project patterns
-- Documentation updated if needed
-
-### Step 5: Triage Findings
-
-Categorize each finding:
-
-| Severity | Action | Description |
-|----------|--------|-------------|
-| 🔴 Critical | Must fix | Bugs, security issues, data loss |
-| 🟡 Important | Should fix | Logic errors, missing tests |
-| 🟢 Suggestion | Consider | Style, optimization, naming |
-| ℹ️ Note | FYI | Observations, not actionable |
-
-### Step 6: Report
-
-```
-## Code Review Report
-
-### Critical (Must Fix)
-- {finding with file:line reference}
-
-### Important (Should Fix)
-- {finding}
-
-### Suggestions
-- {finding}
-
-### Summary
-Files reviewed: {count}
-Findings: {critical} critical, {important} important, {suggestions} suggestions
-```
-
-### Completion
-
-Offer to save significant findings as memories:
-```bash
-/akit-memory save — or create file in .agent/memories/project/
-```
+**⛔ Do NOT read any other step file. Do NOT skip ahead. Do NOT freestyle.**
