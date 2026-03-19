@@ -230,6 +230,19 @@ export const registerInitCommand = (program: Command): void => {
             fmt.info('🎭 Agent manifest installed (agents.yaml)');
           }
 
+          // Install help-entries.md (routing table for /akit-help)
+          const helpSource = joinPath(pkgRoot, 'templates', 'help-entries.md');
+          const helpDest = joinPath(root, '.agent', 'help-entries.md');
+          if (existsSync(helpSource) && !existsSync(helpDest)) {
+            cpSync(helpSource, helpDest);
+            fmt.info('🆘 Help routing table installed');
+          }
+
+          // Create modules/ directory for installable skill packs
+          mkdirSync(joinPath(root, '.agent', 'modules'), { recursive: true });
+          // Create agents/ directory for customize overrides
+          mkdirSync(joinPath(root, '.agent', 'agents'), { recursive: true });
+
           // Install bundled workflows (slash commands)
           const workflowsTemplateDir = joinPath(pkgRoot, 'templates', 'workflows');
           const workflowsTargetDir = joinPath(root, '.agent', 'workflows');

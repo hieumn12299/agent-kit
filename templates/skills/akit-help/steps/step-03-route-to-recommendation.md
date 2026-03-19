@@ -65,6 +65,10 @@ Available commands: agent --help
 ```
 
 #### If fully configured:
+
+**FIRST:** Read `.agent/help-entries.md` for the full routing table of available skills and commands.
+
+Then present this summary:
 ```
 ✅ agent-kit is fully configured! Here's what you can do:
 
@@ -78,10 +82,18 @@ Available commands: agent --help
    /akit-memory           — Save a new insight
    agent context        — Retrieve relevant context
 
+🧩 Modules & Manifests:
+   agent module list    — View installed modules
+   agent module install — Add a skill pack
+   agent manifest generate — Index all project files
+   agent manifest list  — View skills/workflows/agents
+
 🔧 Advanced:
    /akit-plugin-dev     — Build a custom plugin
    /akit-create-graph   — Design a workflow graph
    /akit-review-memories — Audit memory quality
+   /akit-party-mode     — Multi-agent discussion
+   /akit-tutorial       — Guided walkthrough
 
 📊 Health:
    agent doctor         — Run health checks

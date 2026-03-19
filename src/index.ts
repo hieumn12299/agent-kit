@@ -16,6 +16,8 @@ import { registerMcpCommand } from './cli/commands/mcp.js';
 import { registerLockCommand } from './cli/commands/lock.js';
 import { registerPluginCommand } from './cli/commands/plugin.js';
 import { registerGraphCommand } from './cli/commands/graph.js';
+import { registerManifestCommand } from './cli/commands/manifest.js';
+import { registerModuleCommand } from './cli/commands/module.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -54,6 +56,8 @@ export const createProgram = (): Command => {
   registerLockCommand(program);
   registerPluginCommand(program);
   registerGraphCommand(program);
+  registerManifestCommand(program);
+  registerModuleCommand(program);
 
   return program;
 };
